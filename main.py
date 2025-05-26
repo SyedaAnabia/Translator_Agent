@@ -10,14 +10,14 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # Initialize the OpenAI client
 client = AsyncOpenAI(
-    api_key="OPENROUTER_API_KEY",  
+    api_key=OPENROUTER_API_KEY,
     base_url="https://openrouter.ai/api/v1/"
 )
 
 # Initialize the agent with the correct model and pass client as 'openai_client'
 Translator = Agent(
     model=OpenAIChatCompletionsModel(
-        model="qwen/qwen3-235b-a22b:free",
+        model="meta-llama/llama-3.3-70b-instruct:free",
         openai_client=client
     ),
     name="Translator ",
@@ -33,7 +33,7 @@ Translator = Agent(
 
 config=RunConfig(
      model=OpenAIChatCompletionsModel(
-        model="qwen/qwen3-235b-a22b:free",  # Ensure this model is available in your OpenRouter account
+        model="meta-llama/llama-3.3-70b-instruct:free",  # Ensure this model is available in your OpenRouter account
         openai_client=client),
     model_provider="client",
     tracing_disabled=True,
@@ -46,4 +46,4 @@ result=Runner.run_sync(
     run_config=config
 
 )
-print(result.final_output)
+print( result.final_output)
