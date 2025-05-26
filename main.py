@@ -10,7 +10,7 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # Initialize the OpenAI client
 client = AsyncOpenAI(
-    api_key="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",  # make sure to move this key to .env!
+    api_key="OPENROUTER_API_KEY",  
     base_url="https://openrouter.ai/api/v1/"
 )
 
